@@ -45,12 +45,6 @@ directory sonarqube_config_dir do
   group sonarqube_group
 end
 
-template "#{sonarqube_config_dir}/#{sonarqube_config_file}" do
-  source 'sonar.properties.erb'
-  notifies :restart, 'service[sonarqube]', :delayed
-  mode 0600
-end
-
 link '/usr/bin/sonarqube' do
   to sonarqube_runscript
 end
@@ -68,4 +62,10 @@ end
 service 'sonarqube' do
   supports restart: true, reload: false, status: true
   action [:enable, :start]
+end
+
+template "#{sonarqube_config_dir}/#{sonarqube_config_file}" do
+  source 'sonar.properties.erb'
+  notifies :restart, 'service[sonarqube]', :delayed
+  mode 0600
 end

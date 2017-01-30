@@ -1,6 +1,6 @@
 default['sonarqube']['mirror'] = 'https://sonarsource.bintray.com/Distribution/sonarqube/'
-default['sonarqube']['version'] = '5.1.2'
-default['sonarqube']['checksum'] = 'a8d63d837242d0d07c0b3f65cfa9c84d5ae82ee51c6cbb52248bcf0d1bc58491'
+default['sonarqube']['version'] = '5.6.5'
+default['sonarqube']['checksum'] = '759668081266773cf91be6d5f0c585a6383dd87f3eabdc555aea7beae98e58b0'
 default['sonarqube']['os_kernel'] = 'linux-x86-64'
 
 default['sonarqube']['config']['dir'] = '/opt/sonarqube-%{version}/conf'
@@ -17,28 +17,27 @@ default['sonarqube']['web']['https']['port'] = -1 # Default value of -1 leaves h
 default['sonarqube']['embeddedDatabase']['dataDir'] = nil
 default['sonarqube']['embeddedDatabase']['port'] = 9092
 
+# Populate keys 'host', 'port' and 'database', along with jdbc username and password to use MySQL >= 5.6.
+default['sonarqube']['mysqlDatabase'] = {}
+# Populate keys 'host', 'port' and 'sid', along with jdbc username and password to use Oracle.
+# NOTE: SonarQube does not ship with the Oracle JDBC driver, nor does this cookbook install it.
+default['sonarqube']['oracleDatabase'] = {}
+# Populate keys 'host', and 'database', along with jdbc username and password to use PostgreSQL.
+default['sonarqube']['postgresDatabase'] = {}
+# Populate keys 'host', 'port', 'database', and 'integratedSecurity' (true|false), along with jdbc username and password to use MS SQL Server.
+# NOTE: You will need to deploy some DLLs for integrated security to work.
+default['sonarqube']['mssqlDatabase'] = {}
+
 default['sonarqube']['jdbc']['username'] = 'sonar'
 default['sonarqube']['jdbc']['password'] = 'sonar'
 default['sonarqube']['jdbc']['url'] = 'jdbc:h2:tcp://localhost:9092/sonar'
 
-default['sonarqube']['jdbc']['maxActive'] = 20
+default['sonarqube']['jdbc']['maxActive'] = 60
 default['sonarqube']['jdbc']['maxIdle'] = 5
 default['sonarqube']['jdbc']['minIdle'] = 2
 default['sonarqube']['jdbc']['maxWait'] = 5000
 default['sonarqube']['jdbc']['minEvictableIdleTimeMillis'] = 600_000
 default['sonarqube']['jdbc']['timeBetweenEvictionRunsMillis'] = 30_000
-
-default['sonarqube']['web']['https']['keyAlias'] = nil
-default['sonarqube']['web']['https']['keyPass'] = 'changeit'
-default['sonarqube']['web']['https']['keystoreFile'] = nil
-default['sonarqube']['web']['https']['keystorePass'] = nil
-default['sonarqube']['web']['https']['keystoreType'] = 'JKS'
-default['sonarqube']['web']['https']['keystoreProvider'] = nil
-default['sonarqube']['web']['https']['truststoreFile'] = nil
-default['sonarqube']['web']['https']['truststorePass'] = nil
-default['sonarqube']['web']['https']['truststoreType'] = 'JKS'
-default['sonarqube']['web']['https']['truststoreProvider'] = nil
-default['sonarqube']['web']['https']['clientAuth'] = false
 
 default['sonarqube']['web']['http']['maxThreads'] = 50
 default['sonarqube']['web']['http']['minThreads'] = 5
@@ -48,11 +47,13 @@ default['sonarqube']['web']['https']['maxThreads'] = 50
 default['sonarqube']['web']['https']['acceptCount'] = 25
 
 default['sonarqube']['web']['accessLogs']['enable'] = true
-default['sonarqube']['ajp']['port'] = 9009
+default['sonarqube']['ajp']['port'] = -1
 
 default['sonarqube']['updatecenter']['activate'] = true
 default['sonarqube']['http']['proxyHost'] = nil
 default['sonarqube']['http']['proxyPort'] = nil
+default['sonarqube']['https']['proxyHost'] = nil
+default['sonarqube']['https']['proxyPort'] = nil
 default['sonarqube']['http']['auth']['ntlm']['domain'] = nil
 default['sonarqube']['socksProxyHost'] = nil
 default['sonarqube']['socksProxyPort'] = nil

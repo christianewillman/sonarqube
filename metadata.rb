@@ -10,3 +10,6 @@ license 'MIT'
 
 supports 'centos'
 supports 'ubuntu'
+
+issues_url 'https://github.com/christianewillman/sonarqube/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/christianewillman/sonarqube.git' if respond_to?(:source_url)
