@@ -14,11 +14,7 @@
 # User credentials.
 # Permissions to create tables, indices and triggers must be granted to JDBC user.
 # The schema must be created first.
-<% if node['sonarqube']['jdbc']['username'] == 'sonar' -%>
-#sonar.jdbc.username=
-<% else -%>
 sonar.jdbc.username=<%= node['sonarqube']['jdbc']['username'] %>
-<% end -%>
 <% if node['sonarqube']['jdbc']['password'] == 'sonar' -%>
 #sonar.jdbc.password=
 <% else -%>
@@ -35,7 +31,7 @@ sonar.embeddedDatabase.port=<%= node['sonarqube']['embeddedDatabase']['port'] %>
 #----- MySQL 5.6 or greater
 # Only InnoDB storage engine is supported (not myISAM).
 # Only the bundled driver is supported. It can not be changed.
-<% if node['sonarqube']['mysqlDatabase']['host'].nil? && !node['sonarqube']['mysqlDatabase']['port'].nil? && !node['sonarqube']['mysqlDatabase']['database'].nil? -%>
+<% if !node['sonarqube']['mysqlDatabase']['host'].nil? && !node['sonarqube']['mysqlDatabase']['port'].nil? && !node['sonarqube']['mysqlDatabase']['database'].nil? -%>
 sonar.jdbc.url=jdbc:mysql://<%= node['sonarqube']['mysqlDatabase']['host'] %>:<%= node['sonarqube']['mysqlDatabase']['port'] %>/<%= node['sonarqube']['mysqlDatabase']['database'] %>?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
 <% else -%>
 #sonar.jdbc.url=jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance

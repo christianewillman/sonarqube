@@ -1,0 +1,7 @@
+name 'sonarqube_mysql'
+depends 'yum-centos'
+depends 'yum-mysql-community'
+depends 'mysql'
+depends 'build-essential'
+depends 'openssl'
+depends 'database'
