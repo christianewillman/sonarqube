@@ -61,7 +61,8 @@ end
 
 service 'sonarqube' do
   supports restart: true, reload: false, status: true
-  action [:enable, :start]
+  # template will (re)start for us
+  action :enable
 end
 
 template "#{sonarqube_config_dir}/#{sonarqube_config_file}" do

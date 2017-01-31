@@ -3,6 +3,7 @@ require 'serverspec'
 set :backend, :exec
 
 describe port(9000) do
+  sleep(30)
   it { should be_listening }
 end
 
