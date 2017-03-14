@@ -1,6 +1,6 @@
 default['sonarqube']['mirror'] = 'https://sonarsource.bintray.com/Distribution/sonarqube/'
-default['sonarqube']['version'] = '5.1.2'
-default['sonarqube']['checksum'] = 'a8d63d837242d0d07c0b3f65cfa9c84d5ae82ee51c6cbb52248bcf0d1bc58491'
+default['sonarqube']['version'] = '6.2'
+default['sonarqube']['checksum'] = '6bb187b8568d493131952e3b66e65940992f1a62c7962c1bf5801f6f48f1c160'
 default['sonarqube']['os_kernel'] = 'linux-x86-64'
 
 default['sonarqube']['config']['dir'] = '/opt/sonarqube-%{version}/conf'
@@ -60,6 +60,7 @@ default['sonarqube']['http']['proxyUser'] = nil
 default['sonarqube']['http']['proxyPassword'] = nil
 default['sonarqube']['notifications']['delay'] = 60
 default['sonarqube']['log']['profilingLevel'] = 'NONE'
+default['sonarqube']['log']['level'] = 'INFO'
 
 default['sonarqube']['rails']['dev'] = false
 

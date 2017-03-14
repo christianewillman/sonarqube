@@ -7,6 +7,7 @@ provisioner:
 
 platforms:
   - name: ubuntu-12.04
+  - name: ubuntu-14.04
   - name: centos-6.4
 
 suites:
@@ -17,7 +18,10 @@ suites:
       - recipe[sonarqube]
     attributes:
       java:
-        jdk_version: '7'
+        jdk_version: '8'
+        install_flavor: 'oracle'
+        oracle:
+          accept_oracle_download_terms: 'true'
   - name: sonarqube_scanner
     run_list:
       - recipe[sonarqube::scanner]
@@ -29,4 +33,7 @@ suites:
       - recipe[sonarqube_plugin_consumer]
     attributes:
       java:
-        jdk_version: '7'
+        jdk_version: '8'
+        install_flavor: 'oracle'
+        oracle:
+          accept_oracle_download_terms: 'true'
