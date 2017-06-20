@@ -65,6 +65,8 @@ template '/etc/init.d/sonarqube' do
   )
 end
 
+include_recipe 'sonarqube::plugins'
+
 service 'sonarqube' do
   supports restart: true, reload: false, status: true
   action [:enable, :start]
