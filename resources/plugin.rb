@@ -12,6 +12,13 @@ action :install do
     action :nothing
   end
 
+  # we need to remove previous plugin versions first
+  Dir['plugin_file_name_wildcard'].each do |path|
+    file ::File.expand_path(path) do
+      action :delete
+    end
+  end
+
   remote_file plugin_path do
     source plugin_url
     mode 0755
@@ -46,4 +53,9 @@ end
 
 def plugin_file_name
   "sonar-#{plugin_name}-plugin-#{version}.jar"
+end
+
+def plugin_file_name_wildcard
+  plugin_file_name_without_version = "sonar-#{plugin_name}-plugin-.*"
+  ::File.join(sonarqube_plugin_dir, plugin_file_name_without_version)
 end
