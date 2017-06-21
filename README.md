@@ -22,10 +22,50 @@ to install a suitable Oracle JDK or OpenJDK.
 
 ### default
 Installs SonarQube Server and manages `sonar.properties`.
+In case that *-plugin.conf.erb templates available and plugin list defined, their data will be added to sonar.properties
 
 ### scanner
 Installs SonarQube Scanner and manages `sonar-runner.properties`.
 Adds the SonarQube Scanner to all users' `PATH` via `/etc/profile.d`.
+
+### plugins
+Installs SonarQube plugins according to the data in node['sonarqube']['plugin']['list'] attribute
+node['sonarqube']['plugin']['list'] hash should contain the following data:
+```
+{
+   plugin_name_without_sonar_prefix: {
+        "version": version,
+        "template": true (in case that configuration should be in sonar.properties) [false] by default
+    }
+}
+```
+
+Example in role:
+```
+"sonarqube": {
+  "plugin": {
+    "list": {
+      "ldap": {
+        "version": "2.1.0.507",
+        "template": true
+      },
+      "python": {
+        "version": "1.8.0.1496"
+      },
+      "java": {
+        "version": "4.10.0.10260"
+      },
+      "javascript": {
+        "version": "3.1.0.5111"
+      }
+    }
+  }
+}
+```
+
+In case configuration parameters should be added to sonar.properties please follow next steps:
+1. In case that *_plugin.conf.erb template already exists, please set the relevant parameters
+2. If *_plugin.conf.erb template doesn't exists, please create the relevant template
 
 ## LWRP
 
