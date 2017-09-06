@@ -1,6 +1,6 @@
 default['sonarqube']['mirror'] = 'https://sonarsource.bintray.com/Distribution/sonarqube/'
-default['sonarqube']['version'] = '5.1.2'
-default['sonarqube']['checksum'] = 'a8d63d837242d0d07c0b3f65cfa9c84d5ae82ee51c6cbb52248bcf0d1bc58491'
+default['sonarqube']['version'] = '5.6.6'
+default['sonarqube']['checksum'] = '076aa2f119a5ec780b46fdf6f881020821ee0c97d99e067b038a8f04fecb016a'
 default['sonarqube']['os_kernel'] = 'linux-x86-64'
 
 default['sonarqube']['config']['dir'] = '/opt/sonarqube-%{version}/conf'
