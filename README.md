@@ -35,12 +35,12 @@ This LWRP manages SonarQube plugins.
 The `:install` action installs a SonarQube plugin to an existing SonarQube Server instance.
 Plugins are retrieved from
 [SonarSource's distribution mirror](https://sonarsource.bintray.com/Distribution/).
-The plugin version __must__ be specifed.
+The plugin version __must__ be specifed (even when uninstalling).
 
 ```ruby
 # Installs version 1.3 of the SonarQube Groovy plugin
 sonarqube_plugin 'groovy' do
-  version 1.3
+  version "1.3"
 end
 ```
 
@@ -48,7 +48,7 @@ The `:uninstall` action removes a SonarQube plugin.
 
 ```ruby
 sonarqube_plugin 'groovy' do
-  version 1.3
+  version "1.3"
   action :uninstall
 end
 ```
