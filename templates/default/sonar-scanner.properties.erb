@@ -10,3 +10,10 @@ sonar.host.url=<%= node['sonarqube']['scanner']['host']['url'] %>
   sonar.login=<%= node['sonarqube']['scanner']['host']['username'] %>
   sonar.password=<%= node['sonarqube']['scanner']['host']['password'] %>
 <% end -%>
+
+#This is used by sonar-scanner, if not set, Jenkins / other is unable to connect
+<% if node['sonar']['jdbc']['url'] && node['sonar']['jdbc']['username'] && node['sonar']['jdbc']['password'] -%>
+  sonar.jdbc.url=<%= node['sonar']['jdbc']['url'] %>
+  sonar.jdbc.username=<%= node['sonar']['jdbc']['username'] %>
+  sonar.jdbc.password=<%= node['sonar']['jdbc']['password'] %>
+<% end -%>
