@@ -185,3 +185,10 @@ sonar.rails.dev=<%= node['sonarqube']['rails']['dev'] %>
 <% node['sonarqube']['extra_properties'].each do |p| %>
 <%= p %>
 <% end %>
+
+# add plugins configuration
+<% node['sonarqube']['plugin']['list'].each_pair do |k, v| -%>
+ <% if v.fetch('template', false) -%>
+  <%= render "#{k}_plugin.conf.erb" %>
+ <% end -%>
+<% end -%>
