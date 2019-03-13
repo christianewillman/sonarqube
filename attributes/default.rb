@@ -1,5 +1,8 @@
-default['sonarqube']['mirror'] = 'https://binaries.sonarsource.com/Distribution/sonarqube/'
+default['sonarqube']['mirror'] = 'https://binaries.sonarsource.com/Distribution'
 default['sonarqube']['version'] = '5.1.2'
+# sonarqube for CE, also available sonarqube-{datacenter,developer,enterprise} from 
+# https://binaries.sonarsource.com/CommercialDistribution/
+default['sonarqube']['edition'] = 'sonarqube'
 default['sonarqube']['checksum'] = 'a8d63d837242d0d07c0b3f65cfa9c84d5ae82ee51c6cbb52248bcf0d1bc58491'
 default['sonarqube']['os_kernel'] = 'linux-x86-64'
 
