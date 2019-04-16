@@ -154,10 +154,12 @@ http.proxyPort=<%= node['sonarqube']['http']['proxyPort'] %>
 # NT domain name if NTLM proxy is used
 http.auth.ntlm.domain=<%= node['sonarqube']['http']['auth']['ntlm']['domain'] %>
 
+<% if node['sonarqube']['socksProxyHost'] -%>
 # SOCKS proxy (default none)
 socksProxyHost=<%= node['sonarqube']['socksProxyHost'] %>
 socksProxyPort=<%= node['sonarqube']['socksProxyPort'] %>
 
+<% end -%>
 # proxy authentication. The 2 following properties are used for HTTP and SOCKS proxies.
 http.proxyUser=<%= node['sonarqube']['http']['proxyUser'] %>
 http.proxyPassword=<%= node['sonarqube']['http']['proxyPassword'] %>
