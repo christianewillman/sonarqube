@@ -15,11 +15,11 @@ default['sonarqube']['web']['port'] = 9000
 default['sonarqube']['web']['https']['port'] = -1 # Default value of -1 leaves https disabled
 
 default['sonarqube']['embeddedDatabase']['dataDir'] = nil
-default['sonarqube']['embeddedDatabase']['port'] = 9092
+default['sonarqube']['embeddedDatabase']['port'] = nil
 
 default['sonarqube']['jdbc']['username'] = 'sonar'
 default['sonarqube']['jdbc']['password'] = 'sonar'
-default['sonarqube']['jdbc']['url'] = 'jdbc:h2:tcp://localhost:9092/sonar'
+default['sonarqube']['jdbc']['url'] = nil
 
 default['sonarqube']['jdbc']['maxActive'] = 20
 default['sonarqube']['jdbc']['maxIdle'] = 5
