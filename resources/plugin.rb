@@ -1,5 +1,6 @@
 property :plugin_name, String, name_property: true
 property :version, String
+property :checksum, String
 
 actions :install, :uninstall
 default_action :install
@@ -14,6 +15,7 @@ action :install do
 
   remote_file plugin_path do
     source plugin_url
+    checksum new_resource.checksum
     mode 0755
     owner sonarqube_user
     group sonarqube_group
